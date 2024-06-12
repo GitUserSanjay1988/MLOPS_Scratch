@@ -7,7 +7,7 @@ import pickle
 st.header('Selling Price Prediction')
 
 def model_pred(input):
-    with open('./model.pkl', 'rb') as file:
+    with open('model.pkl', 'rb') as file:
         model = pickle.load(file)
         return(model.predict(input))
         
