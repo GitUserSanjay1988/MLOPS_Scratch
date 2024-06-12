@@ -3,13 +3,23 @@ import pandas as pd
 import numpy as np 
 import datetime 
 import pickle
+import os 
 
+current_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(current_dir,'model.pkl')
+print(model_path)
 st.header('Selling Price Prediction')
 
-def model_pred(input):
-    with open('model.pkl', 'rb') as file:
+
+def model_pred(input,model_path):
+    with open(model_path, 'rb') as file:
         model = pickle.load(file)
         return(model.predict(input))
+    
+# def model_pred(input):
+#     with open('model.pkl', 'rb') as file:
+#         model = pickle.load(file)
+#         return(model.predict(input))
         
   
 def transform_input(model_year,km_driven,model_mileage,engine_capacity,max_power,seats,seller_type,fuel_type,transmission):
@@ -107,7 +117,7 @@ with st.form('my_form'):
 
     if st.form_submit_button('Predict'):
         input = transform_input(model_year,km_driven,model_mileage,engine_capacity,max_power,seats,seller_type,fuel_type,transmission)
-        st.write(model_pred(input))
+        st.write(model_pred(input,model_path))
   
 
 
