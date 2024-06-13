@@ -2,7 +2,7 @@ FROM python:3.9-slim-buster
 
 RUN apt-get update && apt-get install -y curl
 
-WORKDIR /Users/sanjaypc/DSML-Oct-22/MLOPs/03_Flask/flask_working
+WORKDIR /Users/sanjaypc/DSML-Oct-22/MLOPs/MLOPS/Flask_CICD/flask_working
 
 COPY requirements.txt ./
 
